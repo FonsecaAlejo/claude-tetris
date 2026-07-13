@@ -46,7 +46,14 @@ jobs:
                  - **Expected behavior** (for bugs): what should happen
                  - **Suggested labels**: the labels you applied and why
                - A closing note thanking the contributor
+            The comment body MUST be written in GitHub-flavored Markdown that GitHub can render correctly:
+               - Use `##`/`###` headings for section titles (e.g. `### Formatted Report`)
+               - Use `-` for bullet lists and `**bold**` for field labels (e.g. `**Type:** Bug`)
+               - Use numbered lists (`1.`, `2.`, ...) for steps to reproduce
+               - Use backticks for inline code/file names and triple-backtick fenced code blocks for logs or code snippets
+               - Do not escape Markdown syntax and do not wrap the whole comment in a single code block
             Use the `gh` CLI to apply labels and post the comment. Example commands:
               gh issue edit ${{ github.event.issue.number }} --add-label "bug" --repo ${{ github.repository }}
               gh issue comment ${{ github.event.issue.number }} --body "..." --repo ${{ github.repository }}
+            When passing the Markdown body to `gh issue comment --body`, write it to a temporary file and use `--body-file` (e.g. `gh issue comment ${{ github.event.issue.number }} --body-file /tmp/comment.md --repo ${{ github.repository }}`) so multi-line Markdown formatting is preserved exactly.
             Be concise, helpful, and friendly. Do not over-engineer the response.
