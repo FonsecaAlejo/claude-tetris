@@ -177,6 +177,126 @@ body {
   transition: background 0.2s, border-color 0.2s;
 }
 
+/* ---- Records ---- */
+.highscores-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  counter-reset: highscore-rank;
+}
+
+.highscores-list li {
+  font-size: 12px;
+  color: var(--fg);
+  font-family: 'Courier New', Courier, monospace;
+  counter-increment: highscore-rank;
+  display: flex;
+  gap: 6px;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.highscores-list li::before {
+  content: counter(highscore-rank) '.';
+  color: var(--label-color);
+}
+
+.highscores-list li.highscore-empty {
+  color: var(--label-color);
+  font-family: inherit;
+}
+
+.highscores-list li.highscore-empty::before {
+  content: '';
+}
+
+.highscores-list li.highscore-highlight {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  font-weight: 700;
+}
+
+.highscores-list li.highscore-highlight::before {
+  color: var(--accent-contrast);
+}
+
+.highscore-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 11px;
+  color: var(--controls-color);
+}
+
+.highscore-stats b {
+  color: var(--accent);
+}
+
+.reset-scores-btn {
+  margin-top: 4px;
+  background: transparent;
+  color: var(--controls-color);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.reset-scores-btn:hover {
+  background: var(--kbd-bg);
+  color: var(--fg);
+}
+
+/* ---- Nuevo récord (overlay) ---- */
+#overlay-newscore {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+#overlay-newscore.hidden {
+  display: none;
+}
+
+.newscore-label {
+  font-size: 13px;
+  color: var(--accent);
+}
+
+#name-input {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--kbd-border);
+  background: var(--board-bg);
+  color: var(--fg);
+  text-align: center;
+  width: 160px;
+}
+
+#save-score-btn {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.15s;
+}
+
+#save-score-btn:hover {
+  background: var(--accent-hover);
+}
+
 /* ---- Controles ---- */
 .controls ul {
   list-style: none;
